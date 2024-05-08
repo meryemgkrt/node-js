@@ -7,36 +7,15 @@
     <title>Document</title>
   </head>
   <body class="bg-success">
-    <h1>Anasayfa</h1>
-    <div class="container mt-3">
-      <div class="row">
-        <div class="col-12">
-          <% urunler.forEach(urun => { %>
-            <% if (urun.isHome) { %>
-              <div class="card mb-3 p-4" >
-                <div class="row">
-                  <div class="col-4">
-                    <img src="/img/<%= urun.img %>" alt="" class="img-fluid w-100">
-                  </div>
-                  <div class="col-8">
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        <a href="/products/<%= urun.id %>">
-                        <%= urun.name %>
-                        </a>
-                      </h5>
-                      <strong class="card-text">Fiyat: <%= urun.price %></strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% } %>
-            
-          <% }) %>
-        
+    <%- include('partials/naw') %>
 
+    <div class="container mt-3 flex justify-content-center align-items-center">
+      <div class="row flex justify-content-center align-items-center">
+        <div class="col-9">
+          <h1 class="text-white">Anasayfa</h1>
+          <% urunler.forEach(urun => { %> <% if (urun.isHome) { %> <%-
+          include('partials/product', urun) %> <% } %> <% }) %>
         </div>
-
       </div>
     </div>
   </body>
